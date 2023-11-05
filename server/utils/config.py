@@ -4,7 +4,7 @@ from dotenv import dotenv_values
 class Config:
     def __init__(self) -> None:
         values = dotenv_values(".env")
-        if values == None:
+        if values == {}:
             values["USERNAME"] = os.getenv("USERNAME")
             values["PASSWORD"] = os.getenv("PASSWORD")
             values["RESENDAPI"] = os.getenv("RESENDAPI")
