@@ -6,6 +6,7 @@ from utils.config import Config
 from beanie import init_beanie
 
 from models.user import User
+from models.badsite import BadSite
 
 @asynccontextmanager
 async def lifespan(app : FastAPI):
@@ -24,7 +25,7 @@ async def init(app):
     config = Config()
     # connect to mongo
     client = AsyncIOMotorClient(config.mongoConnectionURI())
-    await init_beanie(database=client.db_name, document_models=[User])
+    await init_beanie(database=client.db_name, document_models=[User, BadSite])
     try:
         info = client.server_info()
         print(f"success, connected to {info}")
@@ -35,7 +36,10 @@ async def init(app):
 app = FastAPI(lifespan=lifespan)
 
 @app.get("/")
-async def read_root():
+async def read_root(): 
+    site = BadSite(link="https://www.google.com", risk=7)
+    user = User(name="Michael", badsitesvisited=[site], total_sites_visited=0, phishing_links=0)
+    await user.save()
     return {"Hello": "World"}
 
 
