@@ -6,7 +6,7 @@ class Config:
         
         self.db_username = values["USERNAME"]
         self.db_password = values["PASSWORD"]
-        
+        self.resend_api_key = values["RESENDAPI"]
         pass
 
     def mongoConnectionURI(self)->str:

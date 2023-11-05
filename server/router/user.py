@@ -1,5 +1,5 @@
 
-from fastapi import APIRouter, FastAPI
+from fastapi import APIRouter
 
 from models.user import User, UserProjection as projection
 from beanie import PydanticObjectId
