@@ -9,7 +9,8 @@ import resend
 from models.user import User
 from beanie.operators import Eq
 from router.user import savePhishingAttempt
-
+from beanie import PydanticObjectId
+from algorithms.calcValue import calcValue
 router = APIRouter(prefix="/dev")
 
 @router.post("/email")
@@ -44,3 +45,9 @@ async def sendPhish(email : SendPhishInput):
     phishemailinput = PhishingEmailInput(email=email_input.recepient, user=email.user)
     await savePhishingAttempt(email=phishemailinput)
     return res
+
+
+@router.get("/calculateval")
+async def calculate(id : PydanticObjectId):
+    return calcValue[id]
+    

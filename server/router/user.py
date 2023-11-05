@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from fastapi import APIRouter
 
-from models.user import User, UserProjection as projection
+from models.user import User, UserProjection as projection, UserOut
 from models.badsite import BadSite, BadSiteInput
 
 from beanie import PydanticObjectId
@@ -84,5 +84,8 @@ async def savePhishingAttempt(email : PhishingEmailInput):
 @router.get("/{id}")
 async def get_user(id: PydanticObjectId):
     user = await User.get(id)
-    return user
+
+    badvisits = await badVisitsAlltime(user.id)
+
+    return UserOut.fromUser(user=user, ls=badvisits)
 
