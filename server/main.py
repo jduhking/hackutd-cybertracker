@@ -2,8 +2,10 @@ from typing import Union
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
+from models.phishingemail import PhishingEmail
 from utils.config import Config
 from beanie import init_beanie
+from fastapi.middleware.cors import CORSMiddleware
 import resend
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -32,7 +34,7 @@ async def init(app):
     client = AsyncIOMotorClient(config.mongoConnectionURI())
     
     resend.api_key = config.resend_api_key
-    await init_beanie(database=client.db_name, document_models=[User, BadSite])
+    await init_beanie(database=client.db_name, document_models=[User, BadSite, PhishingEmail])
     try:
         info = client.server_info()
         print(f"success, connected to {info}")
@@ -42,13 +44,7 @@ async def init(app):
 
 app = FastAPI(lifespan=lifespan)
 
-origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost:5173",
-    "http://localhost:8080",
-]
-
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
