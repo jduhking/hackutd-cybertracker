@@ -6,7 +6,7 @@
     max-width:100%;  
 }
 
-
+3uj89
 .navbar {
     background-color: #fff;
     display: flex;
@@ -47,13 +47,49 @@
 .bonusSection {
 
     position: absolute;
-    left: 50%;
+    width: 50%;
+    height: 70%;
+    left: 40%;
     top: 20%;
 }
 
 .savedYourself {
-
+    position: absolute;
     font-size: 36px;
-    font-family: 'Frutiger';
+    top: 0%;
+    left: 0%;
+    color: #000;
 
+}
+
+.bonus {
+    position: absolute;
+    display: flex;
+    width: fit-content;
+    font-size: 86px;
+    top: 15%;
+    left: 35%;
+    color: #000;
+}
+.dollarSign {
+    color: #269400;
+}
+
+
+.bonusBlack {
+    color: #000;
+}
+
+.bonusRed {
+    color: #F01716;
+}
+
+.bonusDescription {
+    
+    position: absolute;
+    text-indent: 20px;
+    width: 45%;
+    font-size: 32px;
+    left: 40%;
+    top: 60%;
 }

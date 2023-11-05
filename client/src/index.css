@@ -107,8 +107,9 @@ body {
 
 }
 
-
-@font-face {
-  font-family: Frutiger;
-  src: local('Frutiger'), url(./assets/Frutiger-Bold\ Regular.ttf) format(TrueType);
-}
+ @font-face {
+  font-family: 'frutiger';
+  src: local("frutiger"),
+  url("./assets/frutiger.ttf") format("truetype");
+  font-weight: bold;
+ }
