@@ -11,4 +11,4 @@ class BadSiteInput(BaseModel):
     
 class BadSite(Document, BadSiteInput):
     date_time : Indexed(datetime) = Field(default_factory=datetime.utcnow)
-    url: BadSiteInput.link
+    url: str
