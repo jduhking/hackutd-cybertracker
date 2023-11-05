@@ -1,0 +1,4 @@
+beanie
+fastapi
+motor
+pymongo
