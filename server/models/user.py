@@ -1,10 +1,10 @@
-from beanie import Document, PydanticObjectId
+from beanie import Document, PydanticObjectId, Indexed
 from models.badsite import BadSite
 from pydantic import BaseModel, Field
 
 class User(Document):
-    name : str
-    badsitesvisited : list[BadSite] 
+    email : Indexed(str)
+    name : str 
     total_sites_visited: int
     phishing_links : int
 
