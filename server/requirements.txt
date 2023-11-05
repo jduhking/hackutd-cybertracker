@@ -2,3 +2,4 @@ beanie
 fastapi
 motor
 pymongo
+uvicorn
