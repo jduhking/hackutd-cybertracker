@@ -5,3 +5,4 @@ pymongo
 uvicorn
 resend
 python-dotenv
+numpy
