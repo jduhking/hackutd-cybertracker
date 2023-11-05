@@ -15,6 +15,7 @@
     "@fseehawer/react-circular-slider": "^2.6.1",
     "@mui/material": "^5.14.16",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.6.0",
     "react": "^18.2.0",
     "react-circular-slider-svg": "^0.2.0",
     "react-dom": "^18.2.0",

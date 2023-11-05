@@ -1,5 +1,6 @@
 import GenericCard from "../GenericCard";
 
+
 export default function CyberScore() {
   return (
     <GenericCard

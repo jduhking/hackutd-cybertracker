@@ -8,6 +8,9 @@
     - The "symbol *" part is to solve Firefox SVG sprite bug
     - The "html" element is excluded, otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
  */
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,500&display=swap');
+
  *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
   all: unset;
   display: revert;
@@ -96,7 +99,6 @@ meter {
 :where([draggable="true"]) {
   -webkit-user-drag: element;
 }
-
 /* Revert Modal native behavior */
 :where(dialog:modal) {
   all: revert;
@@ -104,12 +106,15 @@ meter {
 }
 body {
   background-color: #fff;
+  font-family: 'Poppins';
+
 
 }
 
- @font-face {
-  font-family: 'frutiger';
-  src: local("frutiger"),
-  url("./assets/frutiger.ttf") format("truetype");
-  font-weight: bold;
- }
+*:focus {
+  outline: none;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+

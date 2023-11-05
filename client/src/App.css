@@ -3,12 +3,24 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    max-width:100%;  
+    max-width: 100%;
+    animation: fadeInAndDrop 1s ease-in-out; /* Apply the animation to the entire container */
 }
 
-3uj89
+@keyframes fadeInAndDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .navbar {
     background-color: #fff;
+    position: relative;
     display: flex;
     padding: 2%;
 }
@@ -22,24 +34,115 @@
     padding: 0px;
 
 }
+
+.titleContainer {
+    position: absolute;
+    background-color: #F01716;
+    text-align: center;
+    border-radius: 20px;
+    width: 20%;
+    height: 57%;
+    top: 20%;
+    left: 62%;
+
+}
+.cyberView {
+    font-size: 30px;
+    font-style: italic;
+    color: #fff;
+}
+
+@keyframes fadeInAndDrop {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .welcome {
+    font-size: 42px;
+    position: absolute;
+    top: 6%;
+    left: 46%;
+    animation: fadeInAndDrop 1s ease-in-out; /* Apply the animation to the element */
+  }
 .scoreSection {
     background-color: #F01716;
+    position: relative;
     width: 100%;
+    height: 120%;
+    padding: 10%;
+}
+.scoreSection-header{
+  position: absolute;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  top: 5%;
+
+}
+
+.cyberScoreSection {
+    position: absolute;
+    width: 40%;
     height: 100%;
+    top: 16%;
+    left: 5%;
+}
+
+.cyberScoreTitle {
+  position: absolute;
+  top: 0%;
+  left: 25%;
+  font-size: 36px;
+  color: #fff;
+
+}
+
+.whiteWidget {
+
+  position: absolute;
+  top: 10%;
+  left: 6%;
+  width: 80%;
+  background-color: #fff;
+  border-radius: 25%;
+  height: 70%;
+
+}
+.phishingEmailSection {
+  position: absolute;
+  top: 16%;
+  left: 55%;
+  width: 40%;
+  height: 100%;
+
+}
+.phishingEmailSectionTitle {
+  position: absolute;
+  top: 0%;
+  left: 30%;
+  font-size: 36px;
+  color: #fff;
+
 }
 
 .jakeSection {
 
     position: absolute;
     z-index: 3;
-    bottom: -1%;
-    left: 0%;
+    bottom: -10%;
+    left: 6%;
 }
 .circleBackground {
     border-radius: 200%;
     position: absolute;
     background-color: #fff;
-    top: 40%;
+    top: 35%;
     left: -10%;
     width: 745px;
     height: 492px;
@@ -47,34 +150,62 @@
 .bonusSection {
 
     position: absolute;
+    text-align: right;
     width: 50%;
     height: 70%;
-    left: 40%;
+    left: 45%;
     top: 20%;
 }
 
 .savedYourself {
+    font-family: 'Poppins';
     position: absolute;
     font-size: 36px;
     top: 0%;
-    left: 0%;
+    left: 15%;
     color: #000;
 
 }
-
 .bonus {
     position: absolute;
     display: flex;
     width: fit-content;
-    font-size: 86px;
-    top: 15%;
+    font-size: 96px;
+    top: 18%;
     left: 35%;
     color: #000;
-}
-.dollarSign {
+    animation: bounce 4s linear infinite, fadeIn 1s ease-in-out; /* Apply infinite bounce and fadeIn animations */
+  }
+  
+  .dollarSign {
+    position: absolute;
+    left: 100%;
+    top: -4%;
     color: #269400;
-}
-
+    animation: bounce 4s linear infinite, fadeIn 1s ease-in-out; /* Apply infinite bounce and fadeIn animations */
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(10px);
+    }
+    60% {
+      transform: translateY(5px);
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
 
 .bonusBlack {
     color: #000;
@@ -92,4 +223,125 @@
     font-size: 32px;
     left: 40%;
     top: 60%;
+}
+
+.bottomSection {
+
+    position: relative;
+    background-color:#F2DDBB;
+    width: 100%;
+    height: 100%;
+}
+
+.analyticsContainer {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    border-radius: 20px;
+    background-color:#F01716;
+    width: 96%;
+    height: 92%;
+}
+
+.listContainer {
+
+    position: absolute;
+    overflow: hidden;
+    padding-top: 5%;
+    top: 25%;
+    left: 2%;
+    border-radius: 20px;
+    background-color:#fff;
+    width: 96%;
+    height: 72%;
+
+}
+
+.sliderSection {
+
+  position: absolute;
+  top: 8%;
+  left: 4%
+}
+
+.scoreSentiment{
+
+  position: absolute;
+  font-size: 28px;
+  top: 65%;
+
+
+}
+
+.score {
+  position: absolute;
+  font-size: 72px;
+  top: 38%;
+  left: 33%;
+}
+
+.analyticsTop {
+
+    width: 100%;
+    padding: 2%;
+    height: 25%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+.analyticsTitle {
+
+    font-size: 36px;
+    color: #fff;
+}
+
+.analyticsDescription {
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    left: 2%;
+    font-size: 24px;
+    color: #fff;
+}
+.learnMoreTwo {
+    position: absolute;
+    top: 35%;
+    left: 68%;
+    border-radius: 60px;
+    color: #000;
+    width: 200px;
+    height: 45px;
+    background-color:#F2DDBB;
+    text-align: center;
+}
+
+.badSite {
+    
+    position: relative;
+    border-bottom: 1px solid black; /* Black border on bottom */
+    width: 100%;
+    height: 15%;
+    font-size: 22px;
+}
+.firstBadSite {
+    position: relative;
+    border-bottom: 1px solid black; /* Black border on bottom */
+    border-top: 1px solid black; /* Black border on bottom */
+    width: 100%;
+    height: 15%;
+    font-size: 22px;
+}
+
+.badSiteUrl {
+
+    position: absolute;
+    top: 15%;
+    left: 2%;
+}
+
+.badSiteDate {
+
+    position: absolute;
+    top: 15%;
+    left: 70%;
 }

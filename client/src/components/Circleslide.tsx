@@ -9,14 +9,12 @@ const Slider = ({ val, text }: prop) => {
   return (
     <CircularSlider
       handle1={{ value: value, onChange: setValue }}
+      size={350}
       arcColor="red"
+      arcBackgroundColor="transparent"
       startAngle={40}
       endAngle={320}
     >
-      <div style={{ textAlign: "center" }}>
-        {val ?? "83%"}
-        {text}
-      </div>
     </CircularSlider>
   );
 };
