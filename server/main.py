@@ -45,9 +45,13 @@ app.include_router(DevRouter)
 
 @app.get("/")
 async def read_root(): 
-    site = BadSite(link="https://www.google.com", risk=7)
-    user = User(name="Michael", badsitesvisited=[site], total_sites_visited=0, phishing_links=0)
+    
+    user = User(name="Michael", total_sites_visited=0, phishing_links=0)
     await user.save()
+
+    site = BadSite(link="https://www.google.com", risk=7, user=user.id)
+    await site.save()
+    
     return {"Hello": "World"}
 
 
