@@ -96,7 +96,6 @@ meter {
 :where([draggable="true"]) {
   -webkit-user-drag: element;
 }
-
 /* Revert Modal native behavior */
 :where(dialog:modal) {
   all: revert;
@@ -104,12 +103,21 @@ meter {
 }
 body {
   background-color: #fff;
+  font-family: 'Poppins';
+
 
 }
 
- @font-face {
-  font-family: 'frutiger';
-  src: local("frutiger"),
-  url("./assets/frutiger.ttf") format("truetype");
-  font-weight: bold;
- }
+*:focus {
+  outline: none;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://r2.oluwapelps.com/Poppins-Regular.ttf') format('ttf');
+}

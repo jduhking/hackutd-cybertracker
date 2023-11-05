@@ -6,9 +6,9 @@
     max-width:100%;  
 }
 
-3uj89
 .navbar {
     background-color: #fff;
+    position: relative;
     display: flex;
     padding: 2%;
 }
@@ -20,6 +20,26 @@
     width: 100%;
     height: 80%;
     padding: 0px;
+
+}
+
+.titleContainer {
+    position: absolute;
+    background-color: #F01716;
+    text-align: center;
+    border-radius: 20px;
+    width: 20%;
+    height: 55%;
+    top: 20%;
+    left: 45%;
+
+}
+.cyberView {
+    font-size: 42px;
+    color: #fff;
+}
+
+.logo {
 
 }
 .scoreSection {
@@ -49,11 +69,12 @@
     position: absolute;
     width: 50%;
     height: 70%;
-    left: 40%;
+    left: 45%;
     top: 20%;
 }
 
 .savedYourself {
+    font-family: 'Poppins';
     position: absolute;
     font-size: 36px;
     top: 0%;
@@ -92,4 +113,102 @@
     font-size: 32px;
     left: 40%;
     top: 60%;
+}
+
+.bottomSection {
+
+    position: relative;
+    background-color:#F2DDBB;
+    width: 100%;
+    height: 100%;
+}
+
+.analyticsContainer {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    border-radius: 20px;
+    background-color:#F01716;
+    width: 96%;
+    height: 92%;
+}
+
+.listContainer {
+
+    position: absolute;
+    overflow: hidden;
+    padding-top: 5%;
+    top: 25%;
+    left: 2%;
+    border-radius: 20px;
+    background-color:#fff;
+    width: 96%;
+    height: 72%;
+
+}
+
+.analyticsTop {
+
+    width: 100%;
+    padding: 2%;
+    height: 25%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+.analyticsTitle {
+
+    font-size: 36px;
+    color: #fff;
+}
+
+.analyticsDescription {
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    left: 2%;
+    font-size: 24px;
+    color: #fff;
+}
+.learnMoreTwo {
+    position: absolute;
+    top: 35%;
+    left: 68%;
+    border-radius: 60px;
+    color: #000;
+    width: 200px;
+    height: 45px;
+    background-color:#F2DDBB;
+    text-align: center;
+}
+
+.badSite {
+    
+    position: relative;
+    border-bottom: 1px solid black; /* Black border on bottom */
+    width: 100%;
+    height: 15%;
+    font-size: 22px;
+}
+.firstBadSite {
+    position: relative;
+    border-bottom: 1px solid black; /* Black border on bottom */
+    border-top: 1px solid black; /* Black border on bottom */
+    width: 100%;
+    height: 15%;
+    font-size: 22px;
+}
+
+.badSiteUrl {
+
+    position: absolute;
+    top: 15%;
+    left: 2%;
+}
+
+.badSiteDate {
+
+    position: absolute;
+    top: 15%;
+    left: 70%;
 }
