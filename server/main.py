@@ -4,11 +4,13 @@ from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
 from utils.config import Config
 from beanie import init_beanie
+import resend
 
 from models.user import User, UserProjection as projection
 from models.badsite import BadSite
 
 from router.user import router as UserRouter
+from router.dev import router as DevRouter
 @asynccontextmanager
 async def lifespan(app : FastAPI):
     # before server starts
@@ -26,6 +28,8 @@ async def init(app):
     config = Config()
     # connect to mongo
     client = AsyncIOMotorClient(config.mongoConnectionURI())
+    
+    resend.api_key = config.resend_api_key
     await init_beanie(database=client.db_name, document_models=[User, BadSite])
     try:
         info = client.server_info()
@@ -37,6 +41,7 @@ async def init(app):
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(UserRouter)
+app.include_router(DevRouter)
 
 @app.get("/")
 async def read_root(): 
