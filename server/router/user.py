@@ -23,10 +23,12 @@ async def create_user(user : User):
     return await user.save()
 
 @router.get("/badmonthlyvisits")
-async def get_bad_visits_last_month():
+async def get_bad_visits_last_month(id : PydanticObjectId):
     now = datetime.utcnow()
     last_month = now - timedelta(days=30)
-    query = And(GTE(BadSite.date_time, last_month), LTE(BadSite.date_time, now))
+    
+    child = And(GTE(BadSite.date_time, last_month), LTE(BadSite.date_time, now))
+    query = And(child , Eq (BadSite.user, id) )
     res = await BadSite.find_many(query).to_list()
     return res
 
