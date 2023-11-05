@@ -1,11 +1,10 @@
-import smtplib
 import random
 
-class email_api:
+class Email_api:
     def send_email(self, receiver):
         random_number = random.randint(0, 5)
 
-        email = 'eamondevh@gmail.com'
+        # email = 'eamondevh@gmail.com'
         receiver_email = receiver
 
         
@@ -14,11 +13,11 @@ class email_api:
 
         text = f"Subject: {subject}\n\n{message}"
 
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
+        # server = smtplib.SMTP("smtp.gmail.com", 587)
+        # server.starttls()
 
-        server.login(email, "wpgwqkpwxbciffhs")
-        server.sendmail(email, receiver_email, text)
+        # server.login(email, "wpgwqkpwxbciffhs")
+        # server.sendmail(email, receiver_email, text)
 
         print(f"Email has been sent to {receiver_email}")
 
