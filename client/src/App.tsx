@@ -126,7 +126,11 @@ function App() {
           <div className='cyberScoreTitle'>Cyber Score</div>
           <div className='whiteWidget'>
               <div className='sliderSection'>
-                <Slider val={userData.safetyScore} text={'random'} />
+                <Slider
+                  val={userData.safetyScore}
+                  duration={1000} // Adjust the animation duration as needed
+                  text={'random'}
+                />
                 <div className='score'>{setSafetyPercent(userData.safetyScore)}</div>
                 <div className='scoreSentiment'>{setMessage(userData.safetyScore)}</div>
               </div>
