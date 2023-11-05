@@ -55,9 +55,11 @@ def calcValue(user_IDs):
 #     print(len(calcValue(['65475ec60d269bf5d990d849'])))
     
     # Define an API endpoint
+
+user_IDs = ['65475ec60d269bf5d990d849']
 @app.route('/api/endpoint', methods=['GET'])
 def api_endpoint():
-    result = your_python_function()
+    result = calcValue()
     return jsonify({"message": result})
 
 if __name__ == '__main__':
