@@ -47,7 +47,7 @@
 
 }
 .cyberView {
-    font-size: 38px;
+    font-size: 30px;
     font-style: italic;
     color: #fff;
 }
@@ -72,8 +72,63 @@
   }
 .scoreSection {
     background-color: #F01716;
+    position: relative;
     width: 100%;
+    height: 120%;
+    padding: 10%;
+}
+.scoreSection-header{
+  position: absolute;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  top: 5%;
+
+}
+
+.cyberScoreSection {
+    position: absolute;
+    width: 40%;
     height: 100%;
+    top: 16%;
+    left: 5%;
+}
+
+.cyberScoreTitle {
+  position: absolute;
+  top: 0%;
+  left: 25%;
+  font-size: 36px;
+  color: #fff;
+
+}
+
+.whiteWidget {
+
+  position: absolute;
+  top: 10%;
+  left: 6%;
+  width: 80%;
+  background-color: #fff;
+  border-radius: 25%;
+  height: 70%;
+
+}
+.phishingEmailSection {
+  position: absolute;
+  top: 16%;
+  left: 55%;
+  width: 40%;
+  height: 100%;
+
+}
+.phishingEmailSectionTitle {
+  position: absolute;
+  top: 0%;
+  left: 30%;
+  font-size: 36px;
+  color: #fff;
+
 }
 
 .jakeSection {
@@ -200,6 +255,29 @@
     width: 96%;
     height: 72%;
 
+}
+
+.sliderSection {
+
+  position: absolute;
+  top: 8%;
+  left: 4%
+}
+
+.scoreSentiment{
+
+  position: absolute;
+  font-size: 28px;
+  top: 65%;
+
+
+}
+
+.score {
+  position: absolute;
+  font-size: 72px;
+  top: 38%;
+  left: 33%;
 }
 
 .analyticsTop {
