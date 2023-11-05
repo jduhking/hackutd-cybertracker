@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from fastapi import APIRouter
 
-from models.user import User, UserProjection as projection
+from models.user import User, UserProjection as projection, UserOut
 from models.badsite import BadSite, BadSiteInput
 
 from beanie import PydanticObjectId
@@ -86,3 +86,11 @@ async def get_user(id: PydanticObjectId):
     user = await User.get(id)
     return user
 
+
+@router.get("/everything")
+async def get_user_with_everthing(id: PydanticObjectId):
+    user = await(get_user(id))
+
+    res = UserOut.fromUser(user)
+    res.bad_websites = await badVisitsAlltime(id)
+    return res

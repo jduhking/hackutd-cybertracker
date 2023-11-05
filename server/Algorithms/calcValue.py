@@ -1,5 +1,7 @@
 import numpy as np
 import requests
+from flask import Flask, request, jsonify
+app = Flask(__name__)
 
 
 mean = 30
@@ -46,7 +48,15 @@ def calcValue(user_IDs):
     return UsersDetails
 
 
+# Define an API endpoint
+user_IDs = ['65475ec60d269bf5d990d849']
+@app.route('/api/endpoint', methods=['GET'])
+def api_endpoint():
+    result = calcValue(user_IDs)
+    return jsonify({"message": result})
 
+if __name__ == '__main__':
+    app.run(debug=True)
 
 # if __name__ == "__main__":
 #     print(len(calcValue(['65475ec60d269bf5d990d849'])))
