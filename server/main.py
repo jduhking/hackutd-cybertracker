@@ -5,9 +5,10 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from utils.config import Config
 from beanie import init_beanie
 
-from models.user import User
+from models.user import User, UserProjection as projection
 from models.badsite import BadSite
 
+from router.user import router as UserRouter
 @asynccontextmanager
 async def lifespan(app : FastAPI):
     # before server starts
@@ -34,6 +35,8 @@ async def init(app):
     pass
 
 app = FastAPI(lifespan=lifespan)
+
+app.include_router(UserRouter)
 
 @app.get("/")
 async def read_root(): 
