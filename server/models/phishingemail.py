@@ -10,3 +10,7 @@ class PhishingEmail(Document, PhishingEmailInput):
     date :datetime =  Field(default_factory=datetime.utcnow)
     pass
 
+class SendPhishInput(BaseModel):
+    source : str
+    recepient : str
+    user : PydanticObjectId
