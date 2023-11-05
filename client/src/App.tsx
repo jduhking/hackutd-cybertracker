@@ -7,6 +7,7 @@ import MalSites from './components/MalSites'
 import Phishing from './components/Phishing'
 import axios from 'axios'
 import Slider from './components/Circleslide'
+import PhishingIcon from './assets/phising.png'
 interface BadSite {
   id: string;
   url: string;
@@ -119,11 +120,21 @@ function App() {
                 <div className='score'>{setSafetyPercent(userData.safetyScore)}</div>
                 <div className='scoreSentiment'>{setMessage(userData.safetyScore)}</div>
               </div>
+              <button className='LearnMore'
+              onClick={() => setViewSites(true)}
+              >Learn More</button>
           </div>
         </div>
         <div className='phishingEmailSection'>
           <div className='phishingEmailSectionTitle'>Phishing</div>
-          <div className='whiteWidget'></div>
+          <div className='whiteWidget'>
+            <img  className='hook' src={PhishingIcon} width={150} height={150}/>
+            <div className='phishingCount'>{userData.phishingCount}</div>
+            <div className='phishingText'>Mock phishing links clicked!</div>
+            <button className='LearnMore' 
+            onClick={() => setViewSites(false)}
+            >Learn More</button>
+          </div>
         </div>
       </div>
       <div className="bottomSection">
