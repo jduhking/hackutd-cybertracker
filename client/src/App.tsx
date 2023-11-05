@@ -20,8 +20,9 @@ interface PhishingEmails {
 interface UserDetails {
   id: string;
   name: string;
-  listOfBadSites?: Array<BadSite>
-  listOfPhishingEmails?: Array<PhishingEmails> 
+  listOfBadSites?: Array<BadSite>;
+  listOfPhishingEmails?: Array<PhishingEmails>;
+  phishingCount: number;
   bonus: number;
   safetyScore: number;
 }
@@ -38,7 +39,8 @@ function App() {
      listOfPhishingEmails: [{id: '3243', email: 'https://ffuppdateee.org', date: '08/31/2023'},
      {id: '3241', email: 'https://vegdsweb.gmail.com', date: '08/27/2023'}, {id: '3224', email: 'https://ffuppdateee.google.org', date: '08/22/2023'},
      {id: '33224', email: 'https://ffuppdateee.gmail.org', date: '08/25/2023'}, {id: '32424', email: 'https://ffuppdateee.gmail.org', date: '08/22/2023'}],
-    safetyScore: 83
+    safetyScore: 83,
+    phishingCount: 7
   })
   const [viewSites, setViewSites] = useState<boolean>(true)
 
