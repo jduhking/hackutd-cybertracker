@@ -1,0 +1,36 @@
+.main {
+    width: 75vw;
+    height: 75vh;
+    border: 1px solid black;
+    position: absolute;
+    left: 12.5%;
+    top: 12.5%;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.button{
+    /* position: relative;
+    top: 80%;
+    left: 40%; */
+    position: relative;
+    top: 35%;
+
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border: 1px solid black;
+}
+
+.user{
+    padding: 1%;
+    cursor: pointer;
+}
+
+.user:hover{
+    border: 2px solid black;
+}
