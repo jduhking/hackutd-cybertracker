@@ -5,10 +5,9 @@ from models.user import User, UserProjection as projection
 from models.badsite import BadSite, BadSiteInput
 
 from beanie import PydanticObjectId
-from beanie.operators import And, GTE, LTE, Inc, Eq
+from beanie.operators import And, GTE, LTE, Eq
 
 from models.badsite import BadSite
-from bson import ObjectId
 
 from models.phishingemail import PhishingEmail, PhishingEmailInput
 router = APIRouter(prefix="/user")
@@ -65,6 +64,7 @@ async def savePhishingAttempt(email : PhishingEmailInput):
 
     user.phishing_links +=1
     email = PhishingEmail(email=email.email, user=email.user)
+    await user.save()
     return await email.save()
 
 
@@ -73,3 +73,4 @@ async def savePhishingAttempt(email : PhishingEmailInput):
 async def get_user(id: PydanticObjectId):
     user = await User.get(id)
     return user
+
