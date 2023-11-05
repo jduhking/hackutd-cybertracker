@@ -1,4 +1,5 @@
 
+/*global chrome*/
 import './App.css'
 import {useState, useEffect} from 'react'
 import stateFarm from './assets/statefarm.png'
@@ -57,6 +58,16 @@ function App() {
       console.error("Error:", error);
     }
   }
+
+  useEffect(() => {
+   
+
+  // Make a simple request:
+  chrome.runtime.sendMessage("ebeabnndjggpemakipldiklgjdhcchmj", null,
+    function(response) {
+      console.log(response)//A string of the user's id
+    });
+  }, [])
 
   const setMessage = (score: number) => {
 

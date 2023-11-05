@@ -2,6 +2,7 @@ from typing import Union
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
+from fastapi.middleware.cors import CORSMiddleware
 from utils.config import Config
 from beanie import init_beanie
 from fastapi.middleware.cors import CORSMiddleware

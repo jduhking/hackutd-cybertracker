@@ -20,6 +20,18 @@ async def get_users():
 async def create_user(user : User):
     return await user.save()
 
+@router.get("/user_by_email/{email}")
+async def get_user_by_email(email):
+    user = await User.find_one(Eq(User.email, email))
+    return user
+
+@router.get("/extension_page/{email}")
+async def user_extension(email):
+    user = await User.find_one(Eq(User.email, email))
+    return {
+        "phishing_links": user.phishing_links
+    }
+
 @router.get("/badmonthlyvisits")
 async def get_bad_visits_last_month():
     now = datetime.utcnow()
