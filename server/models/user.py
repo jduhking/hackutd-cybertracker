@@ -11,3 +11,4 @@ class User(Document):
 class UserProjection(BaseModel):
     name : str
     id : PydanticObjectId = Field(alias="_id")
+    

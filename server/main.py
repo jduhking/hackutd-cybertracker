@@ -2,11 +2,13 @@ from typing import Union
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
-from fastapi.middleware.cors import CORSMiddleware
+from models.phishingemail import PhishingEmail
 from utils.config import Config
 from beanie import init_beanie
 from fastapi.middleware.cors import CORSMiddleware
 import resend
+from fastapi.middleware.cors import CORSMiddleware
+
 
 from models.user import User, UserProjection as projection
 from models.badsite import BadSite
@@ -32,7 +34,7 @@ async def init(app):
     client = AsyncIOMotorClient(config.mongoConnectionURI())
     
     resend.api_key = config.resend_api_key
-    await init_beanie(database=client.db_name, document_models=[User, BadSite])
+    await init_beanie(database=client.db_name, document_models=[User, BadSite, PhishingEmail])
     try:
         info = client.server_info()
         print(f"success, connected to {info}")

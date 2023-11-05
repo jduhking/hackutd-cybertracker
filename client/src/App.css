@@ -23,6 +23,8 @@
     position: relative;
     display: flex;
     padding: 2%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
 }
 
 .topSection {
@@ -44,6 +46,7 @@
     height: 57%;
     top: 20%;
     left: 62%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
 }
 .cyberView {
@@ -70,6 +73,8 @@
     left: 46%;
     animation: fadeInAndDrop 1s ease-in-out; /* Apply the animation to the element */
   }
+
+
 .scoreSection {
     background-color: #F01716;
     position: relative;
@@ -106,13 +111,34 @@
 .whiteWidget {
 
   position: absolute;
+  overflow: hidden;
   top: 10%;
   left: 6%;
   width: 80%;
   background-color: #fff;
-  border-radius: 25%;
+  border-radius: 50px;
   height: 70%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
+}
+.hook {
+
+  position: absolute;
+  top: 6%;
+  left: 55%;
+}
+.phishingText {
+  position: absolute;
+  top: 57%;
+  left: 15%;
+  font-size: 20px;
+}
+.phishingCount {
+  position: absolute;
+  color: #000;
+  font-size: 72px;
+  top: 35%;
+  left: 43%
 }
 .phishingEmailSection {
   position: absolute;
@@ -240,7 +266,8 @@
     border-radius: 20px;
     background-color:#F01716;
     width: 96%;
-    height: 92%;
+    height: 94%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .listContainer {
@@ -248,12 +275,12 @@
     position: absolute;
     overflow: hidden;
     padding-top: 5%;
-    top: 25%;
+    top: 28%;
     left: 2%;
     border-radius: 20px;
     background-color:#fff;
     width: 96%;
-    height: 72%;
+    height: 68%;
 
 }
 
@@ -268,7 +295,8 @@
 
   position: absolute;
   font-size: 28px;
-  top: 65%;
+  top: 70%;
+  left: 30%;
 
 
 }
@@ -278,6 +306,25 @@
   font-size: 72px;
   top: 38%;
   left: 33%;
+}
+
+.LearnMore {
+  border-radius: 60px;
+  position: absolute;
+  top: 80%;
+  left: 20%;
+  color: #fff;
+  background-color: #F01716;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  text-align: center;
+  height: 10%;
+}
+
+.LearnMore div {
+  position: absolute;
+  top: 20%;
+  left: 30%;
 }
 
 .analyticsTop {
@@ -313,6 +360,7 @@
     height: 45px;
     background-color:#F2DDBB;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .badSite {

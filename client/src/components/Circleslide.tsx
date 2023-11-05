@@ -1,11 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CircularSlider from "react-circular-slider-svg";
 type prop = {
   val?: number;
-  text: string;
+
+  text: string; 
+  duration: number;
 };
-const Slider = ({ val, text }: prop) => {
-  const [value, setValue] = useState(val ?? 20);
+
+const Slider = ({ val, duration, text }: prop) => {
+  const [value, setValue] = useState(0);
+  const targetValue = val;
+  useEffect(() => {
+    if (targetValue !== undefined && targetValue !== value) {
+      const startTime = Date.now();
+      const animationFrame = () => {
+        const currentTime = Date.now();
+        const duration = 1000; // You can adjust the animation duration
+        const elapsedTime = currentTime - startTime;
+        if (elapsedTime < duration) {
+          const newValue = (targetValue * elapsedTime) / duration;
+          setValue(newValue);
+          requestAnimationFrame(animationFrame);
+        } else {
+          setValue(targetValue);
+        }
+      };
+      requestAnimationFrame(animationFrame);
+    }
+  }, [targetValue]);
   return (
     <CircularSlider
       handle1={{ value: value, onChange: setValue }}

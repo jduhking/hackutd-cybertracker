@@ -5,10 +5,11 @@ from models.user import User, UserProjection as projection
 from models.badsite import BadSite, BadSiteInput
 
 from beanie import PydanticObjectId
-from beanie.operators import And, GTE, LTE, Inc, Eq
+from beanie.operators import And, GTE, LTE, Eq
 
 from models.badsite import BadSite
-from bson import ObjectId
+
+from models.phishingemail import PhishingEmail, PhishingEmailInput
 router = APIRouter(prefix="/user")
 
 @router.get("/")
@@ -33,10 +34,12 @@ async def user_extension(email):
     }
 
 @router.get("/badmonthlyvisits")
-async def get_bad_visits_last_month():
+async def get_bad_visits_last_month(id : PydanticObjectId):
     now = datetime.utcnow()
     last_month = now - timedelta(days=30)
-    query = And(GTE(BadSite.date_time, last_month), LTE(BadSite.date_time, now))
+    
+    child = And(GTE(BadSite.date_time, last_month), LTE(BadSite.date_time, now))
+    query = And(child , Eq (BadSite.user, id) )
     res = await BadSite.find_many(query).to_list()
     return res
 
@@ -57,7 +60,29 @@ async def save_url(input:BadSiteInput):
     return await res.save()
     # return "success"
 
+@router.get("/badvisits")
+async def badVisitsAlltime(userid : PydanticObjectId):
+    res = await BadSite.find_many(BadSite.user == userid).to_list()
+    return res
+
+@router.get("/phishing")
+async def getPhishingEmails(userid : PydanticObjectId):
+    res = await PhishingEmail.find_many(PhishingEmail.user == userid).to_list()
+    return res
+
+@router.put("/save_phish")
+async def savePhishingAttempt(email : PhishingEmailInput):
+    user = await User.get(email.user)
+
+    user.phishing_links +=1
+    email = PhishingEmail(email=email.email, user=email.user)
+    await user.save()
+    return await email.save()
+
+
+
 @router.get("/{id}")
 async def get_user(id: PydanticObjectId):
     user = await User.get(id)
     return user
+

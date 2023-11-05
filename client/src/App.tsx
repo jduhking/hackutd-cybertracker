@@ -1,13 +1,14 @@
 
 /*global chrome*/
 import './App.css'
-import {useState, useEffect} from 'react'
+import { useState, useEffect, useRef } from 'react';
 import stateFarm from './assets/statefarm.png'
 import jake from './assets/jake.png'
 import MalSites from './components/MalSites'
 import Phishing from './components/Phishing'
 import axios from 'axios'
 import Slider from './components/Circleslide'
+import PhishingIcon from './assets/phising.png'
 interface BadSite {
   id: string;
   url: string;
@@ -30,6 +31,16 @@ interface UserDetails {
 }
 
 function App() {
+
+  const malSitesRef = useRef(null);
+  const phishingRef = useRef(null);
+
+  const scrollToRef = (ref: any) => {
+    setTimeout(() => {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
+  };
+
 
   const getUserDetails = async () => {
     const userId = '65475ec60d269bf5d990d849';
@@ -126,15 +137,35 @@ function App() {
           <div className='cyberScoreTitle'>Cyber Score</div>
           <div className='whiteWidget'>
               <div className='sliderSection'>
-                <Slider val={userData.safetyScore} text={'random'} />
+                <Slider
+                  val={userData.safetyScore}
+                  duration={1000} // Adjust the animation duration as needed
+                  text={'random'}
+                />
                 <div className='score'>{setSafetyPercent(userData.safetyScore)}</div>
                 <div className='scoreSentiment'>{setMessage(userData.safetyScore)}</div>
               </div>
+              <a className='LearnMore' 
+              onClick={() => {
+                setViewSites(true)
+                scrollToRef(malSitesRef)}
+              }
+              ><div>Learn More</div></a>
           </div>
         </div>
         <div className='phishingEmailSection'>
           <div className='phishingEmailSectionTitle'>Phishing</div>
-          <div className='whiteWidget'></div>
+          <div className='whiteWidget'>
+            <img  className='hook' src={PhishingIcon} width={150} height={150}/>
+            <div className='phishingCount'>{userData.phishingCount}</div>
+            <div className='phishingText'>Mock phishing links clicked!</div>
+            <a className='LearnMore'
+            onClick={() => {
+              setViewSites(false)
+              scrollToRef(phishingRef)}
+            }
+            ><div>Learn More</div></a>
+          </div>
         </div>
       </div>
       <div className="bottomSection">
@@ -147,9 +178,17 @@ function App() {
           </div>
           <div className="listContainer">
             {
-              viewSites ? 
-              <MalSites listOfBadSites={userData.listOfBadSites}/>
-              : <Phishing listOfPhishingEmails={userData.listOfPhishingEmails} />
+              viewSites ? (
+              <>
+              <div id="mal-sites" ref={malSitesRef}></div>
+              <MalSites  listOfBadSites={userData.listOfBadSites}/>
+              </>
+              )
+              : (
+                <>
+              <div id="phish" ref={phishingRef}></div>
+                <Phishing listOfPhishingEmails={userData.listOfPhishingEmails}/>
+              </>)
             } 
           </div>
         </div>
