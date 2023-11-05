@@ -5,6 +5,8 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from utils.config import Config
 from beanie import init_beanie
 import resend
+from fastapi.middleware.cors import CORSMiddleware
+
 
 from models.user import User, UserProjection as projection
 from models.badsite import BadSite
@@ -39,6 +41,21 @@ async def init(app):
     pass
 
 app = FastAPI(lifespan=lifespan)
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost:5173",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(UserRouter)
 app.include_router(DevRouter)
