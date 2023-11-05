@@ -21,13 +21,16 @@ export default function DevPage() {
         <div
           onClick={async () => {
             const id = user["_id"];
-            const email = (await axios.get(`${server}/user/${id}`)).data["email"];
+            const email = (await axios.get(`${server}/user/${id}`)).data[
+              "email"
+            ];
+
             await axios.post(`${server}/dev/send_phishing_email`, {
               source: "buchi@buchi.dev",
               recepient: email,
               user: id,
             });
-            
+
             setPhishingSent(true);
           }}
           className="user"
@@ -37,6 +40,7 @@ export default function DevPage() {
         </div>
       ))}
       <Button className="button">Send a Phishing email</Button>
+      {isPhishingSent && <div>sent phishing email</div>}
     </div>
   );
 }
