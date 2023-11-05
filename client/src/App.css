@@ -321,6 +321,12 @@
   height: 10%;
 }
 
+.LearnMore div {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+}
+
 .analyticsTop {
 
     width: 100%;
