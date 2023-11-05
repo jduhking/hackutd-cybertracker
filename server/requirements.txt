@@ -3,3 +3,5 @@ fastapi
 motor
 pymongo
 uvicorn
+resend
+python-dotenv
