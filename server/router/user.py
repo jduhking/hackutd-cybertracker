@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import random
 from fastapi import APIRouter
 
 from models.user import User, UserOut, UserProjection as projection
@@ -11,6 +12,14 @@ from models.badsite import BadSite
 
 from models.phishingemail import PhishingEmail, PhishingEmailInput
 router = APIRouter(prefix="/user")
+
+import numpy as np
+import requests
+
+
+mean = 30
+stdev = 5
+
 
 @router.get("/")
 async def get_users():
@@ -79,13 +88,52 @@ async def savePhishingAttempt(email : PhishingEmailInput):
     await user.save()
     return await email.save()
 
+async def calcValue(user:User):
+    
+    i  = 0
+    id = user.id
+    #print(user_ID)
+    badSites = await get_bad_visits_last_month(id)
+    
+    
+    #print(badSites)
+    phishingList = await getPhishingEmails(id)
+    #print(phishingList)
+    user_info = {}
+
+    #print(user_info)
+    total = await badVisitsAlltime(id)
+
+    
+    raw_value = (mean - (len(badSites) + len(phishingList))) / stdev
+
+    if 'safetyScore' not in user_info.keys():
+        user_info['safetyScore'] = .70
+        user_info['bonus'] = 0
+
+    user_info['safetyScore'] += (raw_value * .01)
+
+    if user_info['safetyScore'] >= .80:
+        user_info['bonus'] += raw_value * .85
+
+    # print(user_ID)
+    res = UserOut(id=id, name=user.name, badvisits=badSites, 
+                  total_sites_visited=len(total),email=user.email,
+                  phishing_links=len(phishingList),bonus=user_info['bonus'], 
+                  score =user_info['safetyScore'] )
+    
+        #print(UsersDetails[i])
+
+    #print(UsersDetails)
+    return res
+
 
 
 @router.get("/{id}")
 async def get_user(id: PydanticObjectId):
     user = await User.get(id)
-
+    val = random.randint(0, 100)
+    price = 23
     badvisits = await badVisitsAlltime(user.id)
-
-    return UserOut(email=user.email, name=user.name, total_sites_visited= user.total_sites_visited, phishing_links=user.phishing_links, badvisits=badvisits)
+    return await calcValue(user)
 

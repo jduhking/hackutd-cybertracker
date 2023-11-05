@@ -49,5 +49,5 @@ async def sendPhish(email : SendPhishInput):
 
 @router.get("/calculateval")
 async def calculate(id : PydanticObjectId):
-    return calcValue[id]
+    return calcValue([id])
     

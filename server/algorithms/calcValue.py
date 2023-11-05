@@ -4,12 +4,13 @@ import requests
 
 mean = 30
 stdev = 5
-def calcValue(user_IDs):
+async def calcValue(user_IDs):
     UsersDetails = [{}]
     i  = 0
     for user_ID in user_IDs:
         #print(user_ID)
         listOfBadSites = requests.get(f'https://cybertracker-50ev.onrender.com/user/badmonthlyvisits?id={user_ID}')
+        
         badSites = listOfBadSites.json()
         #print(badSites)
         phishingList = requests.get(f'https://cybertracker-50ev.onrender.com/user/phishing?userid={user_ID}')
