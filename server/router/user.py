@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from fastapi import APIRouter
 
-from models.user import User, UserOut, UserProjection as projection, fromUser
+from models.user import User, UserOut, UserProjection as projection
 from models.badsite import BadSite, BadSiteInput
 
 from beanie import PydanticObjectId
