@@ -2,7 +2,7 @@
 import './App.css'
 import {useState} from 'react'
 import stateFarm from './assets/statefarm.png'
-import happyJake from './assets/jakehappy.png'
+import jake from './assets/jake.png'
 import MalSites from './components/MalSites'
 import Phishing from './components/Phishing'
 
@@ -42,6 +42,7 @@ function App() {
     safetyScore: 83,
     phishingCount: 7
   })
+
   const [viewSites, setViewSites] = useState<boolean>(true)
 
   return (
@@ -59,8 +60,9 @@ function App() {
         </div>
       </div>
       <div className="topSection">
+        <div className="welcome">Welcome back, {userData.name}!</div>
         <div className="jakeSection" >
-          <img src={happyJake} width={550} height={550}/>
+          <img src={jake}  />
         </div>
         <div className="circleBackground"></div>
         <div className="bonusSection">

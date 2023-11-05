@@ -3,7 +3,19 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    max-width:100%;  
+    max-width: 100%;
+    animation: fadeInAndDrop 1s ease-in-out; /* Apply the animation to the entire container */
+}
+
+@keyframes fadeInAndDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .navbar {
@@ -29,19 +41,35 @@
     text-align: center;
     border-radius: 20px;
     width: 20%;
-    height: 55%;
+    height: 57%;
     top: 20%;
-    left: 45%;
+    left: 62%;
 
 }
 .cyberView {
-    font-size: 42px;
+    font-size: 38px;
+    font-style: italic;
     color: #fff;
 }
 
-.logo {
-
-}
+@keyframes fadeInAndDrop {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .welcome {
+    font-size: 42px;
+    position: absolute;
+    top: 6%;
+    left: 46%;
+    animation: fadeInAndDrop 1s ease-in-out; /* Apply the animation to the element */
+  }
 .scoreSection {
     background-color: #F01716;
     width: 100%;
@@ -52,14 +80,14 @@
 
     position: absolute;
     z-index: 3;
-    bottom: -1%;
-    left: 0%;
+    bottom: -10%;
+    left: 6%;
 }
 .circleBackground {
     border-radius: 200%;
     position: absolute;
     background-color: #fff;
-    top: 40%;
+    top: 35%;
     left: -10%;
     width: 745px;
     height: 492px;
@@ -67,6 +95,7 @@
 .bonusSection {
 
     position: absolute;
+    text-align: right;
     width: 50%;
     height: 70%;
     left: 45%;
@@ -78,24 +107,50 @@
     position: absolute;
     font-size: 36px;
     top: 0%;
-    left: 0%;
+    left: 15%;
     color: #000;
 
 }
-
 .bonus {
     position: absolute;
     display: flex;
     width: fit-content;
-    font-size: 86px;
-    top: 15%;
+    font-size: 96px;
+    top: 18%;
     left: 35%;
     color: #000;
-}
-.dollarSign {
+    animation: bounce 4s linear infinite, fadeIn 1s ease-in-out; /* Apply infinite bounce and fadeIn animations */
+  }
+  
+  .dollarSign {
+    position: absolute;
+    left: 100%;
+    top: -4%;
     color: #269400;
-}
-
+    animation: bounce 4s linear infinite, fadeIn 1s ease-in-out; /* Apply infinite bounce and fadeIn animations */
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(10px);
+    }
+    60% {
+      transform: translateY(5px);
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
 
 .bonusBlack {
     color: #000;
